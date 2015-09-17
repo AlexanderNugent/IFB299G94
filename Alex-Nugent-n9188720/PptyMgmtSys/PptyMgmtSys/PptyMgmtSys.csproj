@@ -66,6 +66,12 @@
     <Compile Include="approve.Designer.cs">
       <DependentUpon>approve.cs</DependentUpon>
     </Compile>
+    <Compile Include="assignProperty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="assignProperty.Designer.cs">
+      <DependentUpon>assignProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="createTenant.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="approve.resx">
       <DependentUpon>approve.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="assignProperty.resx">
+      <DependentUpon>assignProperty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="createTenant.resx">
       <DependentUpon>createTenant.cs</DependentUpon>

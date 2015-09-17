@@ -25,3 +25,6 @@ E:\PptyMgmtSys\PptyMgmtSys\obj\Debug\PptyMgmtSys.StaffForm.resources
 E:\PptyMgmtSys\PptyMgmtSys\obj\Debug\PptyMgmtSys.StaffMenu.resources
 E:\PptyMgmtSys\PptyMgmtSys\obj\Debug\PptyMgmtSys.csproj.GenerateResource.Cache
 E:\PptyMgmtSys\PptyMgmtSys\obj\Debug\PptyMgmtSys.approve.resources
+C:\GITHUB\IFB299G94\Alex-Nugent-n9188720\PptyMgmtSys\PptyMgmtSys\bin\Debug\PptyMgmtSys.exe.config
+C:\GITHUB\IFB299G94\Alex-Nugent-n9188720\PptyMgmtSys\PptyMgmtSys\obj\Debug\PptyMgmtSys.exe
+C:\GITHUB\IFB299G94\Alex-Nugent-n9188720\PptyMgmtSys\PptyMgmtSys\obj\Debug\PptyMgmtSys.pdb
