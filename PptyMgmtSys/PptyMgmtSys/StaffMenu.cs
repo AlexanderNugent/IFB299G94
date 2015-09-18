@@ -22,5 +22,10 @@ namespace PptyMgmtSys
             
             new createTenant().Show();
         }
+
+        private void StaffMenu_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

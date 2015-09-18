@@ -30,7 +30,7 @@ namespace PptyMgmtSys
         {
             try
             {
-                //conn = "Server=localhost;Database=propertymanagement;Uid=root;Pwd=pass;";
+                
                 conn = "Server=sql6.freesqldatabase.com;Database=sql689558;Uid=sql689558;Pwd=vA7*lR3%;";
                 connect = new MySqlConnection(conn);
                 connect.Open();
@@ -86,9 +86,9 @@ namespace PptyMgmtSys
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
     }
 }

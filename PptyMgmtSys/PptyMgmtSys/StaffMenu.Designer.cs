@@ -76,6 +76,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "StaffMenu";
             this.Text = "StaffMenu";
+            this.Load += new System.EventHandler(this.StaffMenu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
