@@ -90,6 +90,12 @@
     <Compile Include="Manager.Designer.cs">
       <DependentUpon>Manager.cs</DependentUpon>
     </Compile>
+    <Compile Include="modifyStaff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="modifyStaff.Designer.cs">
+      <DependentUpon>modifyStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="propertymanagementDataSet.Designer.cs">
@@ -114,6 +120,12 @@
     <Compile Include="StaffMenu.Designer.cs">
       <DependentUpon>StaffMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="workingHours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="workingHours.Designer.cs">
+      <DependentUpon>workingHours.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="addStaff.resx">
       <DependentUpon>addStaff.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +144,9 @@
     <EmbeddedResource Include="Manager.resx">
       <DependentUpon>Manager.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="modifyStaff.resx">
+      <DependentUpon>modifyStaff.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -146,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StaffMenu.resx">
       <DependentUpon>StaffMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="workingHours.resx">
+      <DependentUpon>workingHours.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

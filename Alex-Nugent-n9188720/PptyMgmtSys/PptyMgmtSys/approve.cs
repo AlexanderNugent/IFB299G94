@@ -20,47 +20,85 @@ namespace PptyMgmtSys {
 
         private void approve_Load(object sender, EventArgs e) {
             getProperties();
+            IDbox.SelectedIndex = 0;
+            refreshInfo();
         }
 
         private void getProperties() {
-            conn = "Server=sql6.freesqldatabase.com;Database=sql689558;Uid=sql689558;Pwd=vA7*lR3%;";
+
+            conn = "Server=team94.cczx3nnzcur7.us-west-2.rds.amazonaws.com;Database=propertyManagementDB;Uid=team94user;Pwd=592road$;";
+            connect = new MySqlConnection(conn);
+            connect.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT PropertyID from property WHERE Status = 'Awaiting Approval'";
+            cmd.Connection = connect;
+
+            MySqlDataReader login = cmd.ExecuteReader();
+
+            while (login.Read()) {
+                IDbox.Items.Add(login["PropertyID"]);
+            }
+
+            login.Close();
+            connect.Close();
+        }
+
+        private void refreshInfo() {
+            conn = "Server=team94.cczx3nnzcur7.us-west-2.rds.amazonaws.com;Database=propertyManagementDB;Uid=team94user;Pwd=592road$;";
             connect = new MySqlConnection(conn);
             connect.Open();
             MySqlCommand cmd = new MySqlCommand();
 
-            cmd.CommandText = "SELECT HouseNumber, StreetName from property WHERE Status = 'Awaiting Approval'";
+            cmd.CommandText = "SELECT StreetName, HouseNumber, Suburb, Postcode, Bedrooms, Bathrooms, TotalRent, PhotoOne, PhotoTwo, PhotoThree from property where PropertyID='" + IDbox.SelectedItem.ToString() + "'";
             cmd.Connection = connect;
             MySqlDataReader login = cmd.ExecuteReader();
 
-            while (login.Read()) {
-                PropertyBox.Items.Add(login.GetString(0) + " " + login.GetString(1));
-            }
+            login.Read();
+            StreetLabel.Text = "Street Name: " + login["StreetName"];
+            HouseLabel.Text = "House Number: " + login["HouseNumber"];
+            SuburbLabel.Text = "Suburb: " + login["Suburb"];
+            PostcodeLabel.Text = "Postcode: " + login["Postcode"];
+            BedroomsLabel.Text = "Bedrooms: " + login["Bedrooms"];
+            BathroomsLabel.Text = "Bathrooms: " + login["Bathrooms"];
+            RentLabel.Text = "Total Rent: " + login["TotalRent"];
 
-        }
+            pictureBox1.ImageLocation = login["PhotoOne"].ToString();
+            pictureBox2.ImageLocation = login["PhotoTwo"].ToString();
+            pictureBox3.ImageLocation = login["PhotoThree"].ToString();
 
-        private void PropertyBox_SelectedIndexChanged(object sender, EventArgs e) {
 
+
+
+            login.Close();
+            connect.Close();
         }
 
         private void button1_Click(object sender, EventArgs e) {
 
-            for(int x = 0; x < PropertyBox.Items.Count; x++){
-                if (PropertyBox.GetItemChecked(x)) {
-                    conn = "Server=sql6.freesqldatabase.com;Database=sql689558;Uid=sql689558;Pwd=vA7*lR3%;";
-                    connect = new MySqlConnection(conn);
-                    connect.Open();
-                    MySqlCommand cmd = new MySqlCommand();
-                    
-                    cmd.CommandText = "UPDATE property SET Status='Available' WHERE HouseNumber=" + PropertyBox.GetItemText(x).Split(' ')[0];
+            conn = "Server=team94.cczx3nnzcur7.us-west-2.rds.amazonaws.com;Database=propertyManagementDB;Uid=team94user;Pwd=592road$;";
+            connect = new MySqlConnection(conn);
+            connect.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "UPDATE property SET Status='Available' WHERE PropertyID='" + IDbox.SelectedItem.ToString() + "'";
 
-                    
-                    cmd.Connection = connect;
-                    MySqlDataReader login = cmd.ExecuteReader();
-                }
+            cmd.Connection = connect;
+            cmd.ExecuteNonQuery();
 
-            }
-            
+            connect.Close();
+
+            MessageBox.Show("Property #" + IDbox.SelectedItem.ToString() + " successfully approved.");
+            this.Close();
         }
 
+        private void IDbox_SelectedIndexChanged(object sender, EventArgs e) {
+            refreshInfo();
+        }
+
+       
+
+
+
+
     }
+    
 }

@@ -18,35 +18,115 @@ namespace PptyMgmtSys {
         private string conn;
         private MySqlConnection connect;
 
-        private void label2_Click(object sender, EventArgs e) {
+        private void assignProperty_Load(object sender, EventArgs e) {
+            getProperties();
+            getStaff();
 
+            IDbox.SelectedIndex = 0;
+            StaffIDbox.SelectedIndex = 0;
+
+            refreshProperties();
+            refreshStaff();
+        }
+
+        private void getStaff() {
+
+            conn = "Server=team94.cczx3nnzcur7.us-west-2.rds.amazonaws.com;Database=propertyManagementDB;Uid=team94user;Pwd=592road$;";
+            connect = new MySqlConnection(conn);
+            connect.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT StaffID from staff";
+            cmd.Connection = connect;
+
+            MySqlDataReader login = cmd.ExecuteReader();
+
+            while (login.Read()) {
+                StaffIDbox.Items.Add(login["StaffID"]);
+            }
+
+            login.Close();
+            connect.Close();
+        }
+
+        private void getProperties() {
+
+            conn = "Server=team94.cczx3nnzcur7.us-west-2.rds.amazonaws.com;Database=propertyManagementDB;Uid=team94user;Pwd=592road$;";
+            connect = new MySqlConnection(conn);
+            connect.Open();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT PropertyID from property";
+            cmd.Connection = connect;
+
+            MySqlDataReader login = cmd.ExecuteReader();
+
+            while (login.Read()) {
+                IDbox.Items.Add(login["PropertyID"]);
+            }
+
+            login.Close();
+            connect.Close();
+        }
+
+        private void refreshStaff() {
+            conn = "Server=team94.cczx3nnzcur7.us-west-2.rds.amazonaws.com;Database=propertyManagementDB;Uid=team94user;Pwd=592road$;";
+            connect = new MySqlConnection(conn);
+            connect.Open();
+            MySqlCommand cmd = new MySqlCommand();
+
+            cmd.CommandText = "SELECT StaffName, StaffDOB from staff where StaffID='" + StaffIDbox.SelectedItem.ToString() + "'";
+            cmd.Connection = connect;
+            MySqlDataReader login = cmd.ExecuteReader();
+
+            login.Read();
+            StaffNameLabel.Text = "Staff Name: " + login["StaffName"];
+            DOBLabel.Text = "DOB: " + login["StaffDOB"].ToString().Substring(0,9);
+
+            login.Close();
+            connect.Close();
+        }
+
+        private void refreshProperties() {
+            conn = "Server=team94.cczx3nnzcur7.us-west-2.rds.amazonaws.com;Database=propertyManagementDB;Uid=team94user;Pwd=592road$;";
+            connect = new MySqlConnection(conn);
+            connect.Open();
+            MySqlCommand cmd = new MySqlCommand();
+
+            cmd.CommandText = "SELECT StreetName, Suburb from property where PropertyID='" + IDbox.SelectedItem.ToString() + "'";
+            cmd.Connection = connect;
+            MySqlDataReader login = cmd.ExecuteReader();
+
+            login.Read();
+            StreetNameLabel.Text = "Street Name: " + login["StreetName"];
+            SuburbLabel.Text = "Suburb: " + login["Suburb"];
+
+            login.Close();
+            connect.Close();
+        }
+
+        private void staffBox_SelectedIndexChanged(object sender, EventArgs e) {
+            refreshStaff();
+        }
+
+        private void IDbox_SelectedIndexChanged(object sender, EventArgs e) {
+            refreshProperties();
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            insertAssigned(propertyBox.Text, staffBox.Text, "0");
-        }
-
-        private bool insertAssigned(string propertyID, string staffID, string hours) {
-            conn = "Server=sql6.freesqldatabase.com;Database=sql689558;Uid=sql689558;Pwd=vA7*lR3%;";
+            conn = "Server=team94.cczx3nnzcur7.us-west-2.rds.amazonaws.com;Database=propertyManagementDB;Uid=team94user;Pwd=592road$;";
             connect = new MySqlConnection(conn);
             connect.Open();
             MySqlCommand cmd = new MySqlCommand();
 
 
-            cmd.CommandText = "INSERT INTO `assigned`(`PropertyID`, `StaffID`, `Hours`) VALUES " +
-                              "(" + propertyID + ", " + staffID + ", " + hours + ");";
-            cmd.Connection = connect;
-            MySqlDataReader login = cmd.ExecuteReader();
-            
-            System.Windows.Forms.MessageBox.Show("Staff No. " + staffID + "assigned to property");
+            cmd.CommandText = "INSERT INTO assigned VALUES ('" + IDbox.SelectedItem.ToString() + "', '" + StaffIDbox.SelectedItem.ToString() + "', '0.0')";
 
-            if (login.Read()) {
-                connect.Close();
-                return true;
-            } else {
-                connect.Close();
-                return false;
-            }
+            cmd.Connection = connect;
+            cmd.ExecuteNonQuery();
+
+            connect.Close();
+
+            MessageBox.Show("Property #" + IDbox.SelectedItem.ToString() + " assigned to Staff #" + StaffIDbox.SelectedItem.ToString());
+            this.Close();
         }
     }
 }

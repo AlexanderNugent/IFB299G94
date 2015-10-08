@@ -27,7 +27,11 @@ namespace PptyMgmtSys {
         }
 
         private void button3_Click(object sender, EventArgs e) {
+            new assignProperty().Show();
+        }
 
+        private void button4_Click(object sender, EventArgs e) {
+            new modifyStaff().Show();
         }
     }
 }
