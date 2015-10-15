@@ -45,6 +45,9 @@
             this.create = new System.Windows.Forms.Button();
             this.back = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.propertymanagementDataSet = new PptyMgmtSys.propertymanagementDataSet();
+            this.tenantBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tenantTableAdapter = new PptyMgmtSys.propertymanagementDataSetTableAdapters.tenantTableAdapter();
             this.tenantIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenantNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenantPhoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,20 +56,11 @@
             this.tenantContactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenantAccountNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tenantBSBDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tenantBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.sql689558DataSet = new PptyMgmtSys.sql689558DataSet();
-            this.tenantBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.propertymanagementDataSet = new PptyMgmtSys.propertymanagementDataSet();
-            this.tenantTableAdapter = new PptyMgmtSys.propertymanagementDataSetTableAdapters.tenantTableAdapter();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
-            this.tenantTableAdapter1 = new PptyMgmtSys.sql689558DataSetTableAdapters.tenantTableAdapter();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tenantBindingSource1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sql689558DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tenantBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertymanagementDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tenantBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -114,7 +108,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(83, 153);
+            this.label4.Location = new System.Drawing.Point(83, 149);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 6;
@@ -123,7 +117,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(469, 49);
+            this.label5.Location = new System.Drawing.Point(83, 182);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 7;
@@ -132,7 +126,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(469, 82);
+            this.label6.Location = new System.Drawing.Point(83, 212);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(95, 13);
             this.label6.TabIndex = 8;
@@ -141,7 +135,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(469, 115);
+            this.label7.Location = new System.Drawing.Point(83, 242);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(28, 13);
             this.label7.TabIndex = 9;
@@ -149,35 +143,35 @@
             // 
             // document
             // 
-            this.document.Location = new System.Drawing.Point(184, 150);
+            this.document.Location = new System.Drawing.Point(184, 146);
             this.document.Name = "document";
             this.document.Size = new System.Drawing.Size(165, 20);
             this.document.TabIndex = 10;
             // 
             // contact
             // 
-            this.contact.Location = new System.Drawing.Point(570, 42);
+            this.contact.Location = new System.Drawing.Point(184, 182);
             this.contact.Name = "contact";
             this.contact.Size = new System.Drawing.Size(165, 20);
             this.contact.TabIndex = 11;
             // 
             // bankAccount
             // 
-            this.bankAccount.Location = new System.Drawing.Point(570, 79);
+            this.bankAccount.Location = new System.Drawing.Point(184, 209);
             this.bankAccount.Name = "bankAccount";
             this.bankAccount.Size = new System.Drawing.Size(165, 20);
             this.bankAccount.TabIndex = 12;
             // 
             // bsb
             // 
-            this.bsb.Location = new System.Drawing.Point(572, 112);
+            this.bsb.Location = new System.Drawing.Point(184, 239);
             this.bsb.Name = "bsb";
             this.bsb.Size = new System.Drawing.Size(165, 20);
             this.bsb.TabIndex = 13;
             // 
             // create
             // 
-            this.create.Location = new System.Drawing.Point(572, 162);
+            this.create.Location = new System.Drawing.Point(135, 304);
             this.create.Name = "create";
             this.create.Size = new System.Drawing.Size(75, 23);
             this.create.TabIndex = 14;
@@ -187,13 +181,12 @@
             // 
             // back
             // 
-            this.back.Location = new System.Drawing.Point(662, 162);
+            this.back.Location = new System.Drawing.Point(250, 304);
             this.back.Name = "back";
             this.back.Size = new System.Drawing.Size(75, 23);
             this.back.TabIndex = 15;
             this.back.Text = "Back";
             this.back.UseVisualStyleBackColor = true;
-            this.back.Click += new System.EventHandler(this.back_Click);
             // 
             // dataGridView1
             // 
@@ -210,13 +203,26 @@
             this.tenantContactDataGridViewTextBoxColumn,
             this.tenantAccountNoDataGridViewTextBoxColumn,
             this.tenantBSBDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.tenantBindingSource1;
-            this.dataGridView1.Location = new System.Drawing.Point(40, 207);
+            this.dataGridView1.DataSource = this.tenantBindingSource;
+            this.dataGridView1.Location = new System.Drawing.Point(364, 40);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(822, 213);
+            this.dataGridView1.Size = new System.Drawing.Size(769, 335);
             this.dataGridView1.TabIndex = 16;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // propertymanagementDataSet
+            // 
+            this.propertymanagementDataSet.DataSetName = "propertymanagementDataSet";
+            this.propertymanagementDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // tenantBindingSource
+            // 
+            this.tenantBindingSource.DataMember = "tenant";
+            this.tenantBindingSource.DataSource = this.propertymanagementDataSet;
+            // 
+            // tenantTableAdapter
+            // 
+            this.tenantTableAdapter.ClearBeforeFill = true;
             // 
             // tenantIDDataGridViewTextBoxColumn
             // 
@@ -224,6 +230,7 @@
             this.tenantIDDataGridViewTextBoxColumn.HeaderText = "TenantID";
             this.tenantIDDataGridViewTextBoxColumn.Name = "tenantIDDataGridViewTextBoxColumn";
             this.tenantIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.tenantIDDataGridViewTextBoxColumn.Width = 50;
             // 
             // tenantNameDataGridViewTextBoxColumn
             // 
@@ -274,68 +281,28 @@
             this.tenantBSBDataGridViewTextBoxColumn.Name = "tenantBSBDataGridViewTextBoxColumn";
             this.tenantBSBDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // tenantBindingSource1
-            // 
-            this.tenantBindingSource1.DataMember = "tenant";
-            this.tenantBindingSource1.DataSource = this.sql689558DataSet;
-            // 
-            // sql689558DataSet
-            // 
-            this.sql689558DataSet.DataSetName = "sql689558DataSet";
-            this.sql689558DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tenantBindingSource
-            // 
-            this.tenantBindingSource.DataMember = "tenant";
-            this.tenantBindingSource.DataSource = this.propertymanagementDataSet;
-            // 
-            // propertymanagementDataSet
-            // 
-            this.propertymanagementDataSet.DataSetName = "propertymanagementDataSet";
-            this.propertymanagementDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tenantTableAdapter
-            // 
-            this.tenantTableAdapter.ClearBeforeFill = true;
-            // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(184, 115);
+            this.dateTimePicker1.Location = new System.Drawing.Point(158, 115);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(194, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 17;
             this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(102, 23);
+            this.label8.Location = new System.Drawing.Point(52, 372);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
             this.label8.TabIndex = 18;
             this.label8.Text = "label8";
-            this.label8.Visible = false;
-            // 
-            // tenantTableAdapter1
-            // 
-            this.tenantTableAdapter1.ClearBeforeFill = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(787, 440);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 19;
-            this.button1.Text = "Delete";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // createTenant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 475);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1166, 475);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.dataGridView1);
@@ -358,10 +325,8 @@
             this.Text = "createTenant";
             this.Load += new System.EventHandler(this.createTenant_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tenantBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sql689558DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tenantBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.propertymanagementDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tenantBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -387,12 +352,6 @@
         private propertymanagementDataSet propertymanagementDataSet;
         private System.Windows.Forms.BindingSource tenantBindingSource;
         private propertymanagementDataSetTableAdapters.tenantTableAdapter tenantTableAdapter;
-        private System.Windows.Forms.TextBox name;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label8;
-        private sql689558DataSet sql689558DataSet;
-        private System.Windows.Forms.BindingSource tenantBindingSource1;
-        private sql689558DataSetTableAdapters.tenantTableAdapter tenantTableAdapter1;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenantIDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenantNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenantPhoneDataGridViewTextBoxColumn;
@@ -401,6 +360,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn tenantContactDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenantAccountNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tenantBSBDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox name;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label8;
     }
 }

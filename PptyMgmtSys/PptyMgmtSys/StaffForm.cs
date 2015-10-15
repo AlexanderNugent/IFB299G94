@@ -30,12 +30,9 @@ namespace PptyMgmtSys
         {
             try
             {
-                
-                conn = "Server=sql6.freesqldatabase.com;Database=sql689558;Uid=sql689558;Pwd=vA7*lR3%;";
+                conn = "Server=localhost;Database=propertymanagement;Uid=root;Pwd=pass;";
                 connect = new MySqlConnection(conn);
                 connect.Open();
-
-
             }
             catch (MySqlException e)
             {
@@ -47,8 +44,8 @@ namespace PptyMgmtSys
         {
             db_connection();
             MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = "Select * from staff where StaffEmail=@email and password=@pass";
-            cmd.Parameters.AddWithValue("@email", user);
+            cmd.CommandText = "Select * from staff where username=@user and password=@pass";
+            cmd.Parameters.AddWithValue("@user", user);
             cmd.Parameters.AddWithValue("@pass", pass);
             cmd.Connection = connect;
             MySqlDataReader login = cmd.ExecuteReader();
@@ -84,11 +81,6 @@ namespace PptyMgmtSys
             {
                 MessageBox.Show("Incorrect Login Credentials");
             }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.Close();
         }
     }
 }

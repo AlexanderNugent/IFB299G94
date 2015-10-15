@@ -8,18 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace PptyMgmtSys
-{
-    public partial class StaffMenu : Form
-    {
-        public StaffMenu()
-        {
+namespace PptyMgmtSys {
+    public partial class workingHours : Form {
+        public workingHours() {
             InitializeComponent();
-        }
-
-        private void newTenantToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new createTenant().Show();
         }
     }
 }
